@@ -1,0 +1,3 @@
+Tại sao không có file cấu hình .conf hay .yml? Vì MinIO trong bài tập này được cấu hình trực tiếp qua biến môi trường trong file docker-compose.yml (User/Pass mặc định là minioadmin / minioadmin).
+
+Thư mục data dùng để làm gì? Đây là nơi MinIO sẽ lưu trữ thực sự các file bạn upload lên (ảnh, pdf...). Việc tạo thư mục này giúp dữ liệu không bị mất khi bạn tắt hoặc khởi động lại container (cơ chế Volume Mapping).

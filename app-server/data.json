@@ -1,0 +1,35 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Là Thanh Bình nè",
+      "age": 21,
+      "major": "Software Engineering",
+      "gpa": 3.5
+    },
+    {
+      "id": 2,
+      "name": "Thanh Bình đến đâyyy",
+      "age": 21,
+      "major": "Software Engineering"
+    },
+    {
+      "id": 3,
+      "name": "Thanh Bình",
+      "age": 19,
+      "major": "Software Engineering"
+    },
+    {
+      "id": 4,
+      "name": "Thanh Bình *2",
+      "age": 21,
+      "major": "Software Engineering"
+    },
+    {
+      "id": 5,
+      "name": "Thanh Bình",
+      "age": 21,
+      "major": "Software Engineering"
+    }
+  ]
+}
