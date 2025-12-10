@@ -317,6 +317,16 @@ Truy cập vào các endpoint để xem kết quả.
 
 ---
 
+## 🐳 Push image lên Docker Hub.
+
+1. Đăng nhập vào [Docker Hub](https://hub.docker.com/).
+2. Tạo Repositories tên `myminicloud`.
+3. Tag image cần push vào Docker Hub Repositories tương ứng `docker tag pttbinh/web:dev thanhbinhh/myminicloud`
+4. Push lên Repositories `docker push thanhbinhh/myminicloud`
+5. Truy cập `https://hub.docker.com/r/thanhbinhh/myminicloud`
+
+---
+
 ## ☁️ Deploy trên AWS EC2
 
 https://www.youtube.com/watch?v=ZZpB4Lgx1rk&t=332s
@@ -325,8 +335,7 @@ https://www.youtube.com/watch?v=ZZpB4Lgx1rk&t=332s
 2. Tạo Instance trên AWS EC2.
 3. Từ Terminus kết nối vào AWS Instance.
 
-Từ đây, mọi lệnh được thực thi trong AWS Instance. 
-4. Cài Docker cho Ubuntu (https://docs.docker.com/engine/install/ubuntu/)
+Từ đây, mọi lệnh được thực thi trong AWS Instance. 4. Cài Docker cho Ubuntu (https://docs.docker.com/engine/install/ubuntu/)
 
 Initialized empty Git repository in /home/ubuntu/MyMiniCloud.git/
 
