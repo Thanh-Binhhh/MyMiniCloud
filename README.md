@@ -329,17 +329,64 @@ Truy cập vào các endpoint để xem kết quả.
 
 ## ☁️ Deploy trên AWS EC2
 
-https://www.youtube.com/watch?v=ZZpB4Lgx1rk&t=332s
+1. Tạo Instance trên AWS EC2.
+2. Giới hạn quyền file `.pem`, đảm bảo khóa không hiển thị công khai.
 
-1. Cài [Terminus](https://termius.com/).
-2. Tạo Instance trên AWS EC2.
-3. Từ Terminus kết nối vào AWS Instance.
+```
+# chmod 400 MyMiniCloud.pem
+icacls "MyMiniCloud.pem" /inheritance:r
+icacls "MyMiniCloud.pem" /grant:r "$($env:USERNAME):(R)"
+```
 
-Từ đây, mọi lệnh được thực thi trong AWS Instance. 4. Cài Docker cho Ubuntu (https://docs.docker.com/engine/install/ubuntu/)
+3. Kết nối tới máy chủ AWS EC2.
 
-Initialized empty Git repository in /home/ubuntu/MyMiniCloud.git/
+```
+ssh -i "MyMiniCloud.pem" ubuntu@ec2-13-212-140-196.ap-southeast-1.compute.amazonaws.com
+```
 
-ssh -i ""C:\Users\Thanh Binh\Downloads\MyMiniCloud.pem"" ubuntu@13.212.140.196
+4. Từ đây, ta đã kết nối thành công vào máy EC2 Ubuntu bằng SSH. Tiến hành cài Docker và Docker Compose trên EC2
+
+```
+# Cập nhật hệ thống
+sudo apt update -y
+sudo apt upgrade -y
+
+# Cài Docker
+sudo apt install docker.io -y
+sudo systemctl enable --now docker
+
+# Cài Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+5.  Deploy toàn bộ thư mục Source_code từ máy Windows lên EC2 (Trên CMD)
+
+```
+scp -i "MyMiniCloud.pem" -r "D:\COMPUTING CLOUD\Final Project\Source_code" ubuntu@ec2-13-212-140-196.ap-southeast-1.compute.amazonaws.com:/home/ubuntu/
+```
+
+6. Cho phép người dùng hiện tại chạy lệnh với quyền quản trị
+
+```
+sudo usermod -aG docker $USER
+```
+
+7. Đăng xuất và đăng nhập lại
+
+8. Khởi chạy dự án
+
+```
+cd ~/Source_code
+docker-compose up -d
+```
+
+9. Chạy dự án qua public IP
+
+```
+# Ví dụ với App Server
+http://13.212.140.196:8085/hello
+```
 
 ---
 
